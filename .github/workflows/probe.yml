@@ -1,0 +1,10 @@
+name: Probe
+on:
+  pull_request_target:
+    types: [labeled]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    environment: test-env
+    steps:
+      - run: echo "ref=$GITHUB_REF sha=$GITHUB_SHA base=${{ github.event.pull_request.base.ref }} head=${{ github.event.pull_request.head.ref }}"
